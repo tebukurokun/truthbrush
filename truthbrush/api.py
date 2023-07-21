@@ -92,6 +92,27 @@ class Api:
 
         return resp.json()
 
+    def _post(self, url: str, params: dict = None) -> Any:
+        resp = self._make_session().post(
+            API_BASE_URL + url,
+            params=params,
+            proxies=proxies,
+            impersonate="chrome110",
+            headers={
+                "Authorization": "Bearer " + self.auth_id,
+                "User-Agent": USER_AGENT,
+            },
+        )
+
+        # Will also sleep
+        self._check_ratelimit(resp)
+
+        return resp.json()
+
+    def compose_truth(self):
+        self.__check_login()
+        return self._post("/v1/statuses", {"status": "test"})
+
     def _get_paginated(self, url: str, params: dict = None, resume: str = None) -> Any:
         next_link = API_BASE_URL + url
 

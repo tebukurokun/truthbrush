@@ -36,6 +36,13 @@ def tags():
 
 
 @cli.command()
+def truth():
+    """Pull trendy tags."""
+
+    print(json.dumps(api.compose_truth()))
+
+
+@cli.command()
 @click.argument("handle")
 def user(handle: str):
     """Pull a user's metadata."""
