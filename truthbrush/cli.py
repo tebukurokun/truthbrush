@@ -37,7 +37,7 @@ def tags():
 
 @cli.command()
 def truth():
-    """Pull trendy tags."""
+    """Compose Truth."""
 
     print(json.dumps(api.compose_truth()))
 
