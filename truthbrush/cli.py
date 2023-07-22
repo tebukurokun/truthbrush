@@ -39,7 +39,7 @@ def tags():
 def truth():
     """Compose Truth."""
 
-    print(json.dumps(api.compose_truth()))
+    print(json.dumps(api.compose_truth("test")))
 
 
 @cli.command()

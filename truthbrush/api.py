@@ -109,9 +109,9 @@ class Api:
 
         return resp.json()
 
-    def compose_truth(self):
+    def compose_truth(self, message: str):
         self.__check_login()
-        return self._post("/v1/statuses", {"status": "test"})
+        return self._post("/v1/statuses", {"status": message})
 
     def _get_paginated(self, url: str, params: dict = None, resume: str = None) -> Any:
         next_link = API_BASE_URL + url

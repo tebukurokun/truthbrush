@@ -12,11 +12,11 @@ api = Api(
 )
 
 
-def truth():
+def compose_truth(message: str):
     """Compose Truth."""
 
-    print(json.dumps(api.compose_truth()))
+    print(json.dumps(api.compose_truth(message)))
 
 
 if __name__ == '__main__' :
-    truth()
+    compose_truth("test")
